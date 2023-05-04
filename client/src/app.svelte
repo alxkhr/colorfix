@@ -1,5 +1,7 @@
 <script lang="ts">
   import LoadImage from './load-image.svelte';
+  import Editor from './editor.svelte';
+
   let image: HTMLImageElement | null = null;
   function onImageLoaded(img: HTMLImageElement) {
     image = img;
@@ -8,8 +10,7 @@
 
 <h1>Color Fix</h1>
 {#if image}
-  <img src={image.src} alt="Loaded" />
-{/if}
-{#if !image}
+  <Editor {image} />
+{:else}
   <LoadImage {onImageLoaded} />
 {/if}
