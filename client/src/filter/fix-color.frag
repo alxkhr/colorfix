@@ -1,5 +1,6 @@
 precision mediump float;
 uniform sampler2D u_image;
+uniform float u_target_hue_shift;
 varying vec2 v_texCoord;
 
 vec3 rgb2hsv(vec3 c)
@@ -24,7 +25,7 @@ vec3 hsv2rgb(vec3 c)
 vec3 fix_color(vec3 c) {
   vec3 hsv = rgb2hsv(c);
   if (hsv.y > 0.5 && hsv.z > 0.5 && (hsv.x > 0.9 || hsv.x < 0.1)) {
-    hsv.x = 0.5;
+    hsv.x = mod(hsv.x + u_target_hue_shift, 1.0);
     hsv.z = 1.0;
     return hsv2rgb(hsv);
   }
