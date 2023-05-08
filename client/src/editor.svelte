@@ -12,6 +12,16 @@
   function onChange() {
     drawFn(targetHueShift);
   }
+  function onSave() {
+    drawFn(targetHueShift);
+    requestAnimationFrame(() => {
+      const link = document.createElement('a');
+      link.download = 'image.png';
+      const dataURL = canvas.toDataURL();
+      link.href = dataURL;
+      link.click();
+    });
+  }
 </script>
 
 <canvas bind:this={canvas} />
@@ -23,3 +33,4 @@
   bind:value={targetHueShift}
   on:change={onChange}
 />
+<button on:click={onSave}>Save</button>

@@ -6,10 +6,10 @@
   - source hue range
   - source saturation range
   - source value range
-- save image
 - improve user flows (i.e. load image clicks, controls in editor over/beneath image)
 - fullscreen interface and fit image
 - styles, icons
+- better filename for saved image
 
 # ideas
 
