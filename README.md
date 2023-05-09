@@ -1,14 +1,8 @@
 # roadmap
 
-- user may adjust color fix
-  - target saturation
-  - target value
-  - source hue range
-  - source saturation range
-  - source value range
 - improve user flows (i.e. load image clicks, controls in editor over/beneath image)
-- fullscreen interface and fit image
 - styles, icons
+  - fullscreen interface and fit image
 - better filename for saved image
 
 # ideas
