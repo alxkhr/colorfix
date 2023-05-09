@@ -18,7 +18,7 @@ async fn serve_static(
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([127, 0, 0, 1], 3001));
 
     let listener = TcpListener::bind(addr).await?;
 
