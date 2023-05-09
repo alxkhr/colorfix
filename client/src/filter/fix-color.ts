@@ -59,6 +59,23 @@ export function fixColorFilter(
     glProgram,
     'u_target_hue_shift',
   );
+  const targetValueLocation = gl.getUniformLocation(
+    glProgram,
+    'u_target_value',
+  );
+  const targetSaturationLocation = gl.getUniformLocation(
+    glProgram,
+    'u_target_saturation',
+  );
+  const sourceHueLocation = gl.getUniformLocation(glProgram, 'u_source_hue');
+  const sourceHueRangeLocation = gl.getUniformLocation(
+    glProgram,
+    'u_source_hue_range',
+  );
+  const sourceSVRangeLocation = gl.getUniformLocation(
+    glProgram,
+    'u_source_sv_range',
+  );
   // Tell WebGL how to convert from clip space to pixels
   gl.viewport(0, 0, canvas.width, canvas.height);
   // Clear the canvas
@@ -81,9 +98,21 @@ export function fixColorFilter(
   // set the resolution
   gl.uniform2f(canvasResolutionLocation, canvas.width, canvas.height);
   // return a function to draw the filter
-  return function (targetHueShift: number) {
-    // set the value
+  return function (
+    targetHueShift: number,
+    targetValue: number,
+    targetSaturation: number,
+    sourceHue: number,
+    sourceHueRange: number,
+    sourceSVRange: number,
+  ) {
+    // set the values
     gl.uniform1f(targetHueShiftLocation, targetHueShift);
+    gl.uniform1f(targetValueLocation, targetValue);
+    gl.uniform1f(targetSaturationLocation, targetSaturation);
+    gl.uniform1f(sourceHueLocation, sourceHue);
+    gl.uniform1f(sourceHueRangeLocation, sourceHueRange);
+    gl.uniform1f(sourceSVRangeLocation, sourceSVRange);
     // Draw the rectangle.
     gl.drawArrays(gl.TRIANGLES, 0, 6);
   };
