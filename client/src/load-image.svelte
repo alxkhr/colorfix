@@ -40,3 +40,12 @@
   <label for="file">Image file:</label>
   <input type="file" id="file" on:change={chooseFile} accept="image/*" />
 </div>
+
+<style>
+  div {
+    margin-bottom: 1rem;
+  }
+  input {
+    margin-left: 1rem;
+  }
+</style>
