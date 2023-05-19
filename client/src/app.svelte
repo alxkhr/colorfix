@@ -8,9 +8,17 @@
   }
 </script>
 
-<h1>Color Fix</h1>
+<h1>colorfix</h1>
 {#if image}
   <Editor {image} />
 {:else}
   <LoadImage {onImageLoaded} />
 {/if}
+
+<style>
+  h1 {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+</style>

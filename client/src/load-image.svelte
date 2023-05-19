@@ -41,11 +41,59 @@
   <input type="file" id="file" on:change={chooseFile} accept="image/*" />
 </div>
 
-<style>
-  div {
-    margin-bottom: 1rem;
-  }
+<style lang="postcss">
   input {
-    margin-left: 1rem;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+    display: block;
+    height: auto;
+    width: 100%;
+    background: transparent;
+    font-size: 1em;
+  }
+  input:not([type='file']) {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    max-width: 400px;
+    &:focus {
+      border-bottom: 1px solid black;
+    }
+  }
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    cursor: text;
+  }
+  label:hover {
+    transform: translate3d(-1px, -1px, 0);
+    color: blue;
+  }
+  label:active {
+    transform: none;
+  }
+  button,
+  input[type='file']::file-selector-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    font-size: 1em;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0 0 currentColor;
+    padding: 0.4em 0.5em;
+    font-weight: 600;
+    &:hover {
+      color: blue;
+      transform: translate3d(-1px, -1px, 0);
+      box-shadow: 4px 4px 0 0 currentColor;
+    }
+    &:active {
+      transform: none;
+      box-shadow: 3px 3px 0 0 currentColor;
+    }
   }
 </style>
