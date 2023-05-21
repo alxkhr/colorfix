@@ -14,6 +14,9 @@
   function onLoadURL() {
     if (url) {
       loadImage(url, true);
+    } else {
+      // focus the input
+      document.getElementById('url').focus();
     }
   }
 
@@ -30,18 +33,26 @@
   }
 </script>
 
-<div>
-  <label for="url">Image URL:</label>
-  <input type="text" id="url" bind:value={url} />
-  <button on:click={onLoadURL}>Load Image</button>
-</div>
-
-<div>
-  <label for="file">Image file:</label>
+<div class="container">
+  <input class="new" type="text" id="url" bind:value={url} />
+  <button on:click={onLoadURL}>LOAD</button>
   <input type="file" id="file" on:change={chooseFile} accept="image/*" />
+  <button class="new" on:click={() => document.getElementById('file').click()}
+    >BROWSE</button
+  >
 </div>
 
 <style lang="postcss">
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
   input {
     border: none;
     outline: none;
@@ -52,32 +63,16 @@
     width: 100%;
     background: transparent;
     font-size: 1em;
-  }
-  input:not([type='file']) {
     display: block;
-    border-bottom: 1px solid #ccc;
     max-width: 400px;
+    border-bottom: 1px solid #ccc;
     &:focus {
       border-bottom: 1px solid black;
     }
   }
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-    cursor: text;
-  }
-  label:hover {
-    transform: translate3d(-1px, -1px, 0);
-    color: blue;
-  }
-  label:active {
-    transform: none;
-  }
-  button,
-  input[type='file']::file-selector-button {
+  button {
     border: none;
     background: none;
-    cursor: pointer;
     outline: none;
     padding: 0;
     font-size: 1em;
@@ -86,6 +81,8 @@
     box-shadow: 3px 3px 0 0 currentColor;
     padding: 0.4em 0.5em;
     font-weight: 600;
+    min-width: 300px;
+    cursor: pointer;
     &:hover {
       color: blue;
       transform: translate3d(-1px, -1px, 0);
@@ -95,5 +92,11 @@
       transform: none;
       box-shadow: 3px 3px 0 0 currentColor;
     }
+  }
+  input[type='file'] {
+    display: none;
+  }
+  .new {
+    margin-top: 2rem;
   }
 </style>
