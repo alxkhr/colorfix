@@ -1,8 +1,8 @@
 # roadmap
 
-- improve user flows (i.e. load image clicks, controls in editor over/beneath image)
 - styles, icons
-  - fullscreen interface and fit image
+  - editor menu
+  - fullscreen fit image
 - better filename for saved image
 
 # ideas
